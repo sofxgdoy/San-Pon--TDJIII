@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2017 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour {
 			instance = GetComponent<GameManager>();
 			SceneManager.sceneLoaded += OnLevelFinishedLoading;
 		} else {
-			Destroy(gameObject);
+			//}Destroy(gameObject);
 		}
 	}
 
@@ -57,6 +57,8 @@ public class GameManager : MonoBehaviour {
 
 	// Load a scene with a specified string name
 	public void LoadScene(string sceneName) {
+		
+		Debug.Log("Quit!");
 		instance.StartCoroutine(Load(sceneName));
 		instance.StartCoroutine(FadeOut(instance.faderObj, instance.faderImg));
 	}
@@ -111,21 +113,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void ExitGame() {
-		// If we are running in a standalone build of the game
-		#if UNITY_STANDALONE
-			// Quit the application
-			Application.Quit();
-		#endif
-
-		// If we are running in the editor
-		#if UNITY_EDITOR
-			// Stop playing the scene
-			UnityEditor.EditorApplication.isPlaying = false;
-		#endif
+		
+		Application.Quit();  //salir
+		Debug.Log("Quit!");
+		
 	}
 
 	private bool isReturning = false;
 	public void ReturnToMenu() {
+
+		Debug.Log("Quit!");
+
 		if (isReturning) {
 			return;
 		}
@@ -135,6 +133,9 @@ public class GameManager : MonoBehaviour {
 			LoadScene("Menu");
 			isReturning = true;
         }
+		
 	}
+
+	 
 
 }
