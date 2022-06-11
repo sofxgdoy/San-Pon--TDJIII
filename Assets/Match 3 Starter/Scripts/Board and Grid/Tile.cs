@@ -134,17 +134,24 @@ public class Tile : MonoBehaviour {
 
         if (matchingTiles.Count >= 2) // continua si se encuentra un match de dos o mas
         {
+            StartCoroutine(esperarYCargar());
             for (int i = 0; i < matchingTiles.Count; i++) // hace una iteracion por cada matching tile y remueve sus sprites seteandolos en null
             {
+             StartCoroutine(esperarYCargar());
             matchingTiles[i].GetComponent<SpriteRenderer>().sprite = null;
+             StartCoroutine(esperarYCargar());
+            
             }
             matchFound = true; // setea matchFound a true :D 
         }
+        
     }
 
 	public void ClearAllMatches() {
         if (render.sprite == null)
         return;
+
+        StartCoroutine(esperarYCargar());
 
         ClearMatch(new Vector2[2] { Vector2.left, Vector2.right });
         ClearMatch(new Vector2[2] { Vector2.up, Vector2.down });
@@ -157,6 +164,10 @@ public class Tile : MonoBehaviour {
             SFXManager.instance.PlaySFX(Clip.Clear);
             GUIManager.instance.MoveCounter--; //esto decrece el contador cada vez que el sprite se cambia
         }
+    }
+
+    private IEnumerator esperarYCargar() {
+        yield return new WaitForSecondsRealtime(1f);
     }
 
 }

@@ -100,7 +100,9 @@ public class BoardManager : MonoBehaviour {
          if (render.sprite == null) { // almacena el valor en un integer
             nullCount++;
          }
+         StartCoroutine(esperarYCargar());
          renders.Add(render);
+         
         }
 
       for (int i = 0; i < nullCount; i++) { // loop otra vez para empezar a cambiar y llenar
@@ -109,6 +111,7 @@ public class BoardManager : MonoBehaviour {
          for (int k = 0; k < renders.Count - 1; k++) { // loop en cada sprite renderer de la lista de renders
             renders[k].sprite = renders[k + 1].sprite;
             renders[k + 1].sprite = GetNewSprite(x, ySize - 1); // aseguramos que el tablero este siempre lleno
+            StartCoroutine(esperarYCargar());
           }
         }
       IsShifting = false;
@@ -132,6 +135,9 @@ public class BoardManager : MonoBehaviour {
 
        return possibleCharacters[Random.Range(0, possibleCharacters.Count)];
     }
-
+    
+    private IEnumerator esperarYCargar() {
+        yield return new WaitForSecondsRealtime(1f);
+    }
 
 }

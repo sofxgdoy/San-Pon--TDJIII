@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Match 3 Starter/Scenes/Game2_Prueba.unity
+- path: Assets/Match 3 Starter/Scenes/IntroPrueba.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

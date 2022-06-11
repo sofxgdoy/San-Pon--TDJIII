@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class DialogoManager : MonoBehaviour
 {
     public Text textoDialogo;
+    public GameObject boton;
+    public GameObject botonJugar;
     
     
     //variable que trackeara las oraciones
@@ -32,6 +34,8 @@ public class DialogoManager : MonoBehaviour
    public void MostrarSiguienteOracion() {
        if(oraciones.Count == 0) {
            FinalizarDialogo();
+           boton.SetActive(false);
+           botonJugar.SetActive(true);
            return;
        }
 
