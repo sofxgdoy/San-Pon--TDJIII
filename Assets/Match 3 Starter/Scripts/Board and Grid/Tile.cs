@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour {
 
 	private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 
-	private bool matchFound = false;  //cuando se encuentre un match, esta variable se vuelve true
+	
 
 	void Awake() {
 		render = GetComponent<SpriteRenderer>();
@@ -91,6 +91,7 @@ public class Tile : MonoBehaviour {
         render2.sprite = render.sprite; // cambia el sprite2, seteandolo como el 1
         render.sprite = tempSprite; // al sprite1, lo setea como sprite2, guardandolo en spritetemporal
         SFXManager.instance.PlaySFX(Clip.Swap); // sonido
+        GUIManager.instance.MoveCounter--; //esto decrece el contador cada vez que el sprite se cambia
     }
 
 	private GameObject GetAdjacent(Vector2 castDir) {       //esta funcion recupera los tiles adyacentes enviando un raycast, si se encuentra un tile en esa direccion, se devuelve su gameObject
@@ -147,6 +148,7 @@ public class Tile : MonoBehaviour {
         
     }
 
+    private bool matchFound = false;  //cuando se encuentre un match, esta variable se vuelve true
 	public void ClearAllMatches() {
         if (render.sprite == null)
         return;
@@ -162,7 +164,7 @@ public class Tile : MonoBehaviour {
             StopCoroutine(BoardManager.instance.FindNullTiles());   //estas dos lineas detienen FindNullTiles y le dicen que vuelva a arrancar desde el principio
             StartCoroutine(BoardManager.instance.FindNullTiles());
             SFXManager.instance.PlaySFX(Clip.Clear);
-            GUIManager.instance.MoveCounter--; //esto decrece el contador cada vez que el sprite se cambia
+            
         }
     }
 
