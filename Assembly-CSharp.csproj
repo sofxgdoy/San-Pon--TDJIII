@@ -46,6 +46,7 @@
      <Compile Include="Assets\Match 3 Starter\Scripts\Dialogo\DialogoTrigger.cs" />
      <Compile Include="Assets\Match 3 Starter\Scripts\Dialogo\DialogoManager.cs" />
      <Compile Include="Assets\Match 3 Starter\Scripts\Managers\GameManager.cs" />
+     <Compile Include="Assets\Match 3 Starter\Scripts\Managers\CambioEscena.cs" />
      <None Include="Assets\Match 3 Starter\Audio\Music\Attribution.txt" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.33f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
