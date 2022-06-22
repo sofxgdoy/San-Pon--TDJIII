@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Match 3 Starter/Scenes/Menu.unity
+- path: Assets/Match 3 Starter/Scenes/Game3.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
