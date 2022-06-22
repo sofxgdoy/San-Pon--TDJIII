@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright (c) 2017 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,6 +23,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour {
 	public static GUIManager instance;
@@ -36,6 +37,13 @@ public class GUIManager : MonoBehaviour {
 
 	private int score;
 	private int moveCounter; //inicializo el contador
+	private string currentScene;
+	public Color colorDerrota;
+
+	public GameObject continuar;
+	public GameObject perdiste;
+
+	public int minimo;
     
 	public int Score {
        get {
@@ -82,7 +90,15 @@ public class GUIManager : MonoBehaviour {
 			highScoreTxt.text = "Best: " + PlayerPrefs.GetInt("HighScore").ToString();
 		}
 
+        if ( score < minimo ) {
+			Debug.Log("Entry");
+		   yourScoreTxt.text = score.ToString();
+		   continuar.SetActive(false);
+		   perdiste.SetActive(true);
+		  
+		} else {
 		yourScoreTxt.text = score.ToString();
+		}
 	}
 
 	private IEnumerator WaitForShifting() {
