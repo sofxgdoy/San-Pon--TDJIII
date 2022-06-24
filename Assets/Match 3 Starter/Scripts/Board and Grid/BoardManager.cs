@@ -74,10 +74,10 @@ public class BoardManager : MonoBehaviour {
 
     
 	public IEnumerator FindNullTiles() {    // esto va a interar en el tablero en busca de tiles con null sprites, y si encuentra,  llama a ShiftTilesDown para empezar a llenar
-      FixedUpdate();
         for (int x = 0; x < xSize; x++) {
             for (int y = 0; y < ySize; y++) {
                if (tiles[x, y].GetComponent<SpriteRenderer>().sprite == null) {   //si encuentra tiles con sprite en null, empieza a llenar
+                FixedUpdate();
                 yield return StartCoroutine(ShiftTilesDown(x, y));
                 break;
                 }
@@ -97,7 +97,7 @@ public class BoardManager : MonoBehaviour {
     }
 
 
-	private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = .03f) {
+	private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = .06f) {
       IsShifting = true;
       List<SpriteRenderer>  renders = new List<SpriteRenderer>();
       int nullCount = 0;
